@@ -1,0 +1,69 @@
+*{margin: 0px;padding: 0px;}
+body{
+	background: url(/static/images/016.jpg) no-repeat center center fixed;
+	text-align: center;
+}
+.div{
+	height: 15px;
+	color: yellow;
+	font-size: 10px;
+	margin-bottom: 10px;
+}
+.form{
+	display: inline-block;
+	width: 500px;
+	height: 400px;
+	background-color: rgba(0,0,0,0.5);
+	border-radius: 15px;
+	margin-top: 180px;
+}
+.form:hover{
+	box-shadow: 2px 2px 4px white,2px 2px 4px white inset;
+}
+h1{
+	padding-top: 30px;
+	color: white;
+	font-size: 50px;
+	font-family: h1;
+}
+hr{margin-top: 10px;margin-bottom: 20px;}
+li{list-style: none;}
+label{
+	color: grey;
+	display: inline-table;
+	width: 100px;
+	text-align: justify;
+	text-align-last: justify;
+	font-size: 20px;
+	font-family: h1;
+	transform: scale(2);
+}
+input{
+	background: transparent;!important;
+	border: none;
+	outline: none;
+	text-align: center;
+	color: white;
+}
+input[name=username],input[name=password]{
+	width: 400px;
+	height: 40px;
+	margin-bottom: 20px;
+	border-bottom: 2px solid grey;
+	font-size: 20px;
+}
+input[name=signin],input[name=signup]{
+	width: 80px;
+	height: 30px;
+	font-size: 20px;
+	margin: 20px 20px;
+	border: 1px solid rgba(255,255,255,0.5);
+	border-radius: 10px;
+}
+input[name=signin]:active, input[name=signup]:active{
+	background: rgba(255,255,255,0.2);
+}
+@font-face{
+	font-family: h1;
+	src:url(/static/Font/书法.ttf);
+}

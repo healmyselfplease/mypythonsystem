@@ -1,0 +1,47 @@
+*{margin: 0px;padding: 0px}
+body{
+    background-color: grey;
+}
+.tal{
+    float: top;
+    width:100%;
+    height:40px;
+    line-height: 40px;
+    background-color: aqua;
+}
+.user{
+    float: right;
+    display: inline-block;
+    text-align: center;
+    width: 200px;
+    height: 100%;
+    background-color: orange;
+}
+.message{
+    display: none;
+    background-color: yellow;
+}
+.usermessage:hover .message{
+    display:block;
+}
+.body{
+    width: 100%;
+    height: auto;
+    margin-top: 40px;
+    background-color: cornflowerblue;
+}
+.top{
+    text-align: center;
+    width: 100%;
+    background-color: black;
+}
+.top input{
+    opacity:0;
+    margin-bottom: 10px;
+    background-color: orange;
+    border: 2px white;
+    outline: none;
+}
+.top label{
+    background-color: orange;
+}

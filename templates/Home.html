@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <link rel="stylesheet" href="/static/css/Home.css">
+    <script src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/static/js/jquery.cookie.js"></script>
+</head>
+<body>
+<div class="tal">
+    <div class="user">
+        {% if name %}
+            <div class="usermessage">
+                <p name="username">{{name}}</p>
+                <div class="message">
+                    <input id="signout" type="button" value="退出登录">
+                </div>
+            </div>
+        {% else %}
+            <input type="button" name="login" value="登录" onclick="login_onclick()">
+        {% endif %}
+    </div>
+</div>
+{% if authority %}
+<div class="body">
+    <div class="top">
+        <input type="radio" name="biao" checked id="button1"/>
+        <label for="button1">员工信息</label>
+        <input type="radio" name="biao" id="button2"/>
+        <label for="button2">部门信息</label>
+        <input type="radio" name="biao" id="button3"/>
+        <label for="button3">在职信息</label>
+        {% if add %}
+            <input type="radio" name="biao" id="button4"/>
+            <label for="button4">添加员工信息</label>
+        {% endif %}
+    </div>
+    <div class="table1">
+        <table id="table1" border="1">
+            <tr>
+                <td>姓名</td>
+                <td>工号</td>
+                <td>民族</td>
+                <td>性别</td>
+                <td>年龄</td>
+                <td>身份证号</td>
+                <td>电话号码</td>
+                <td>email</td>
+                <td>地址</td>
+            </tr>
+            {% for foo in mess %}
+            <tr>
+                <td>{{ foo.0 }}</td>
+                <td>{{ foo.1 }}</td>
+                <td>{{ foo.2 }}</td>
+                <td>{{ foo.3 }}</td>
+                <td>{{ foo.4 }}</td>
+                <td>{{ foo.5 }}</td>
+                <td>{{ foo.6 }}</td>
+                <td>{{ foo.7 }}</td>
+                <td>{{ foo.8 }}</td>
+                <td><button>修改</button></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <div class="table2">
+        <table id="table2" border="1">
+            <tr>
+                <td>姓名</td>
+                <td>工号</td>
+                <td>部门</td>
+                <td>职位</td>
+            </tr>
+            {% for foo in mess %}
+            <tr>
+                <td>{{ foo.0 }}</td>
+                <td>{{ foo.1 }}</td>
+                <td>{{ foo.9 }}</td>
+                <td>{{ foo.11 }}</td>
+                <td><button>修改</button></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <div class="table3">
+        <table id="table3" border="1">
+            <tr>
+                <td>姓名</td>
+                <td>工号</td>
+                <td>入职时间</td>
+                <td>在职情况</td>
+            </tr>
+            {% for foo in mess %}
+            <tr>
+                <td>{{ foo.0 }}</td>
+                <td>{{ foo.1 }}</td>
+                <td>{{ foo.12 }}</td>
+                {% if foo.13 %}
+                    <td>在职</td>
+                {% else %}
+                    <td>离职</td>
+                {% endif %}
+                <td><button>修改</button></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+{% endif %}
+</body>
+</html>
+<script>
+    function login_onclick() {
+        window.location.href="/login";
+    }
+    $("#signout").click(
+        function () {
+            window.location.replace("/Home"),
+            $.removeCookie("name",{path:"/"}),
+            $.removeCookie("authority",{path:"/"});
+        }
+    )
+</script>

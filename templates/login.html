@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>XXX</title>
+    <link rel="shortcut icon" href="/static/images/icon1.ico">
+    <link rel="stylesheet"  href="/static/css/login.css"/>
+    <link rel="stylesheet" href="/static/Font/font-awesome-4.7.0/css/font-awesome.min.css"/>
+    <script src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/static/js/jquery.cookie.js"></script>
+</head>
+<body>
+	<div id="form" class="form">
+		<h1>Login</h1>
+        <hr>
+		<div>
+			<li>
+                <div class="div"></div>
+                <label for="username">UserName</label>
+            </li>
+			<li><input type="text" name="username" id="UserName" required="required" autocomplete="off"></li>
+			<li><label for="password">PassWord</label></li>
+			<li><input type="password" name="password" id="PassWord"></li>
+			<li>
+                <input type="submit" id="submit" name="signin" value="sign in">
+                <input type="button" id="signup" name="signup" value="sign up">
+			</li>
+		</div>
+	</div>
+</body>
+</html>
+
+<script>
+    $("#submit").click(function () {
+        $.ajax({
+            type:"post",
+            url:"/LoginHome",
+            data:{
+                username:$("#UserName").val(),
+                password:$("#PassWord").val(),
+            },
+            success:function (result) {
+                {#密码错误#}
+                if (!result){
+                    $(".div").text("密码或账号不存在！");
+                }
+                else{
+                    result=JSON.parse(result),
+                    s_cookie("name",result["name"],{path:"/"}),
+                    s_cookie("authority",result["authority"],{path:"/"}),
+                    window.location.href="/Home";
+                }
+            },
+        })
+    })
+    function s_cookie(name,value,path) {
+        $.cookie(name,value,path);
+    }
+</script>
